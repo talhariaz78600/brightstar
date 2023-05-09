@@ -21,4 +21,4 @@ const server=app.listen(port, () => {
   console.log(`inotebook app listening on port ${port}`)
   
 })
-// server.timeout = 60000;
+server.timeout = 60000;
