@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const mongooseURI='mongodb+srv://talhariaz:talhariaz@cluster0.k2itfyk.mongodb.net/portel?retryWrites=true&w=majority'
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 
 
 const connectToMongo = () => {

@@ -5,7 +5,7 @@ const cors=require('cors')
 connectToMongo();   
 const express = require('express')
 const app = express()
-const path=require('path')
+// const path=require('path')
 const port =process.env.port|| 4000;
 app.use(bodyParser.json({ limit: '500mb' }));
 
@@ -20,13 +20,13 @@ app.use('/api/admin',require('./routes/admin'));
 app.use('/api/result',require('./routes/result'));
 app.use('/api/frist',require('./routes/frist'));
 //serving the fornted
-app.use(express.static(path.join(__dirname,'./portel/build')))
-app.get('*',(req,res)=>{
-  path.join("./portel/build/index.html"),
-  function(err){
-    res.status(500).send(err);
-  }
-})
+// app.use(express.static(path.join(__dirname,'./portel/build')))
+// app.get('*',(req,res)=>{
+//   path.join("./portel/build/index.html"),
+//   function(err){
+//     res.status(500).send(err);
+//   }
+// })
 app.get('/health', (req, res) => {
   res.status(200).json({ message: 'Server is running' });
 });
