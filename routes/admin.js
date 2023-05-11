@@ -86,11 +86,12 @@ router.post('/adminlogin', [
   )
 ///////////////////////fetchadmin :post"/api/admin/fetchadmin"////////////////////////////
 router.post('/fetchadmin', fetchadmin, async (req, res) => {
-
+    let success=false
     try {
       const userId = req.admin.id;
       const user = await Admin.findById(userId).select("-password");
-      res.json(user);
+      success=true;
+      res.json({user,success});
   
     } catch (error) {
       console.error(error.message);

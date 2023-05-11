@@ -27,9 +27,12 @@ router.post('/createsubject',async (req,res)=>{
 //////////////////////////fetch subject////////////////////////////
 router.get('/fetchsubject',async (req,res)=>{
     const studentrollno=req.header('studentrollno');
+    let success=false;
     try {
         const subjects= await Result.find({studentrollno});
-        res.json({subjects});
+
+        success=true;
+        res.json({subjects,success});
     } catch (error) {
         console.error(error);
         

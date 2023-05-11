@@ -26,11 +26,13 @@ try {
 })
 /////////////////////////////student attendence get////////////////////////////
 router.get('/fetchattendence',async (req,res)=>{
-        const studentrollno=req.header('studentrollno')
+        const studentrollno=req.header('studentrollno');
+        let success=false;
         try {
             
             const atend= await Attendence.find({studentrollno});
-            res.json({atend});
+            success=true;
+            res.json({atend,success});
             
         } catch (error) {
             res.json(error);

@@ -109,11 +109,12 @@ router.get('/fetchstudent', fetchstudent, async (req, res) => {
 })
 ///////////////////////////////////////Single student in Admin data//////////////////////////////////
 router.get('/singlestudent', async (req, res) => {
-
+let success=false;
   try {
     const userId = req.header('Id')
     const user = await Student.findById(userId);
-    res.json({user});
+    success=true;
+    res.json({user,success});
 
   } catch (error) {
   
@@ -123,10 +124,12 @@ router.get('/singlestudent', async (req, res) => {
 })
 ////////////////////////fetch all student :post:"/api/student/fetchallstudent"///////////////////////
 router.get('/fetchallstudent', async (req, res) => {
+  let success=false;
   try {
     const studentclass = req.header('studentclass');
     let allstudent = await Student.find({ studentclass });
-    res.send({ allstudent });
+    success=true;
+    res.send({ allstudent,success });
   } catch (error) {
 
     console.error(error.message);

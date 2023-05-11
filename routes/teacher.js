@@ -122,11 +122,12 @@ router.post('/teacherlogin', [
 
 /////////////////////////////////////Get single user:post:"/api/teacher/fetchteacher"/////////////////////////////////
 router.post('/fetchteacher', fetchteacher, async (req, res) => {
-
+  let success=false;
   try {
     const userId = req.teacher.id;
     const user = await Teacher.findById(userId).select("-password");
-    res.json({user});
+    success=true;
+    res.json({user,success});
 
   } catch (error) {
     console.error(error.message);
@@ -136,10 +137,11 @@ router.post('/fetchteacher', fetchteacher, async (req, res) => {
 })
 ///////////// Get the data of all user: post:"api/teacher/fetchallteacher"/////////////////////////////////////
 router.get('/fetchallteacher', async (req, res) => {
+  const success=false;
   try {
     const post = req.header('post');
     let allteacher = await Teacher.find({ post });
-    res.send({ allteacher });
+    res.send({ allteacher,success });
   } catch (error) {
 
     console.error(error.message);
