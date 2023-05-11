@@ -18,7 +18,7 @@ app.use('/api/admin',require('./routes/admin'));
 app.use('/api/result',require('./routes/result'));
 app.use('/api/frist',require('./routes/frist'));
 const server=app.listen(port, () => {
-  console.log(`inotebook app listening on port ${port}`)
+  console.log(`schoolbrightstar app listening on port ${port}`)
   
 })
 server.timeout = 60000;
