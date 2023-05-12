@@ -5,6 +5,7 @@ router.post('/fristpage',async(req,res)=>{
     const photof=req.body.photof;
     const fristheading=req.body.fristheading;
    
+    let success=false;
     try {
         const fristpage="fristpage";
         const creat= await Frist.create({
@@ -12,7 +13,8 @@ router.post('/fristpage',async(req,res)=>{
             fristheading:fristheading,
             fristpage:fristpage
         })
-        res.json({creat});
+        success=true;
+        res.json({creat,success});
         
     } catch (error) {
         console.error(error);
@@ -21,22 +23,25 @@ router.post('/fristpage',async(req,res)=>{
 })
 ////////////////////////fetch information for activites//////////////////////
 router.get('/getactivites',async(req,res)=>{
+    let success=false;
     try {
         const fristpage='fristpage';
         const activites= await Frist.find({fristpage});
-        res.json({activites});
+        success=true;
+        res.json({activites,success});
     } catch (error) {
         console.error(error);
     }
 });
 router.delete('/deleteactivites/:id', async (req, res) => {
-
+    let success=false;
     try {
       ////////////////Find the note to be updated and updated it/////////////
       let student = await Frist.findById(req.params.id);
       if (!student) { return res.status(404).send("not found") }
       student = await Frist.findByIdAndDelete(req.params.id)
-      res.json({ "student": "activite deleted has been successfull" });
+      success=true;
+      res.json({success, "student": "activite deleted has been successfull" });
     } catch (error) {
       res.error(error, "internal server error");
     }
