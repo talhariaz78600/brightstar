@@ -17,7 +17,7 @@ app.use('/api/attendence',require('./routes/attendence'));
 app.use('/api/admin',require('./routes/admin'));
 app.use('/api/result',require('./routes/result'));
 app.use('/api/frist',require('./routes/frist'));
-app.use('/api/contact',require('./routes/Contact'));
+app.use('/api/contact',require('./routes/contact'));
 const server=app.listen(port, () => {
   console.log(`schoolbrightstar app listening on port ${port}`)
   
