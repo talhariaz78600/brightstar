@@ -28,5 +28,19 @@ router.get('/getactivites',async(req,res)=>{
     } catch (error) {
         console.error(error);
     }
-})
+});
+router.delete('/deleteactivites/:id', async (req, res) => {
+
+    try {
+      ////////////////Find the note to be updated and updated it/////////////
+      let student = await Frist.findById(req.params.id);
+      if (!student) { return res.status(404).send("not found") }
+      student = await Frist.findByIdAndDelete(req.params.id)
+      res.json({ "student": "activite deleted has been successfull" });
+    } catch (error) {
+      res.error(error, "internal server error");
+    }
+  
+  
+  })
 module.exports=router;
