@@ -43,7 +43,7 @@ router.delete('/deleteactivites/:id', async (req, res) => {
       success=true;
       res.json({success, "student": "activite deleted has been successfull" });
     } catch (error) {
-      res.error(error, "internal server error");
+      res.send(error);
     }
   
   
