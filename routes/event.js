@@ -45,7 +45,7 @@ router.delete('/deleteevent/:id', async (req, res) => {
       if (!student) { return res.status(404).send("not found") }
       student = await Event.findByIdAndDelete(req.params.id)
       success=true;
-      res.json({success, "student": "activite deleted has been successfull" });
+      res.json({success, "event": "event deleted has been successfull" });
     } catch (error) {
       res.send(error);
     }

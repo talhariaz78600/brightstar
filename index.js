@@ -10,6 +10,10 @@ app.use(bodyParser.json({ limit: '100mb' }));
 app.use(express.json())
 app.use(cors());
 ///avilable routes////////
+app.get('/',(req,res)=>{
+  res.send("<h1>working fine</h1>")
+
+})
 app.use('/api/email',require('./routes/mail'));
 app.use('/api/student',require('./routes/student'));
 app.use('/api/teacher',require('./routes/teacher'));
